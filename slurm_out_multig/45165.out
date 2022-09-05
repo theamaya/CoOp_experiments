@@ -1,0 +1,18 @@
+Python Interpreter = /nfs/users/ext_amaya.dharmasiri/miniconda3/envs/dassl/bin/python
+which nvcc =  /usr/local/cuda/bin/nvcc
+nvcc --version =  nvcc: NVIDIA (R) Cuda compiler driver Copyright (c) 2005-2020 NVIDIA Corporation Built on Wed_Jul_22_19:09:09_PDT_2020 Cuda compilation tools, release 11.0, V11.0.221 Build cuda_11.0_bu.TC445_37.28845127_0
+CUDA_VISIBLE_DEVICES =  0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
++ DATA=/nfs/users/ext_amaya.dharmasiri/repos/VL-LTR/data
++ TRAINER=CoOp
++ DATASET=imagenetLT
++ CFG=rn50_cvlp/rn50_wikipromptcvlp
++ CTP=end
++ NCTX=16
++ SHOTS=16
++ CSC=False
++ PRETRAINED_BACKBONE=/nfs/users/ext_amaya.dharmasiri/repos/VL-LTR/checkpoints/pretrain_r50_original/checkpoint_50.pth
++ for SEED in 1
++ DIR=output/imagenetLT/CoOp/rn50_cvlp/rn50_wikipromptcvlp_16shots/nctx16_cscFalse_ctpend/seed1
++ '[' -d output/imagenetLT/CoOp/rn50_cvlp/rn50_wikipromptcvlp_16shots/nctx16_cscFalse_ctpend/seed1 ']'
++ echo 'Oops! The results exist at output/imagenetLT/CoOp/rn50_cvlp/rn50_wikipromptcvlp_16shots/nctx16_cscFalse_ctpend/seed1 (so skip this job)'
+Oops! The results exist at output/imagenetLT/CoOp/rn50_cvlp/rn50_wikipromptcvlp_16shots/nctx16_cscFalse_ctpend/seed1 (so skip this job)

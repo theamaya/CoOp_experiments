@@ -1,0 +1,31 @@
+Python Interpreter = /nfs/users/ext_amaya.dharmasiri/miniconda3/envs/dassl/bin/python
+which nvcc =  /usr/local/cuda/bin/nvcc
+nvcc --version =  nvcc: NVIDIA (R) Cuda compiler driver Copyright (c) 2005-2020 NVIDIA Corporation Built on Wed_Jul_22_19:09:09_PDT_2020 Cuda compilation tools, release 11.0, V11.0.221 Build cuda_11.0_bu.TC445_37.28845127_0
+CUDA_VISIBLE_DEVICES =  0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
++ DATA=/nfs/users/ext_amaya.dharmasiri/repos/VL-LTR/data
++ TRAINER=CoOp
++ DATASET=imagenetLT
++ CFG=rn50_cvlp/rn50_nocvlp
++ CTP=end
++ NCTX=16
++ SHOTS=16
++ CSC=False
++ PRETRAINED_BACKBONE=
++ for SEED in 1
++ DIR=output/imagenetLT/CoOp/rn50_cvlp/rn50_nocvlp_16shots/nctx16_cscFalse_ctpend/seed1
++ '[' -d output/imagenetLT/CoOp/rn50_cvlp/rn50_nocvlp_16shots/nctx16_cscFalse_ctpend/seed1 ']'
++ /nfs/users/ext_amaya.dharmasiri/miniconda3/envs/dassl/bin/python -u train.py --root /nfs/users/ext_amaya.dharmasiri/repos/VL-LTR/data --seed 1 --trainer CoOp --dataset-config-file configs/datasets/imagenetLT.yaml --config-file configs/trainers/CoOp/rn50_cvlp/rn50_nocvlp.yaml --output-dir output/imagenetLT/CoOp/rn50_cvlp/rn50_nocvlp_16shots/nctx16_cscFalse_ctpend/seed1 --pretrained_backbone TRAINER.COOP.N_CTX 16 TRAINER.COOP.CSC False TRAINER.COOP.CLASS_TOKEN_POSITION end DATASET.NUM_SHOTS 16
+/nfs/users/ext_amaya.dharmasiri/repos/CoOp/clip/clip.py:23: UserWarning: PyTorch version 1.7.1 or higher is recommended
+  warnings.warn("PyTorch version 1.7.1 or higher is recommended")
+Traceback (most recent call last):
+  File "train.py", line 217, in <module>
+    main(args)
+  File "train.py", line 133, in main
+    cfg = setup_cfg(args)
+  File "train.py", line 125, in setup_cfg
+    cfg.merge_from_list(args.opts)
+  File "/nfs/users/ext_amaya.dharmasiri/miniconda3/envs/dassl/lib/python3.8/site-packages/yacs/config.py", line 223, in merge_from_list
+    _assert_with_logging(
+  File "/nfs/users/ext_amaya.dharmasiri/miniconda3/envs/dassl/lib/python3.8/site-packages/yacs/config.py", line 545, in _assert_with_logging
+    assert cond, msg
+AssertionError: Override list has odd length: ['16', 'TRAINER.COOP.CSC', 'False', 'TRAINER.COOP.CLASS_TOKEN_POSITION', 'end', 'DATASET.NUM_SHOTS', '16']; it must be a list of pairs

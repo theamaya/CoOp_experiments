@@ -1,0 +1,10 @@
+Python Interpreter = /nfs/users/ext_amaya.dharmasiri/miniconda3/envs/dassl/bin/python
+which nvcc =  /usr/local/cuda/bin/nvcc
+nvcc --version =  nvcc: NVIDIA (R) Cuda compiler driver Copyright (c) 2005-2020 NVIDIA Corporation Built on Wed_Jul_22_19:09:09_PDT_2020 Cuda compilation tools, release 11.0, V11.0.221 Build cuda_11.0_bu.TC445_37.28845127_0
+CUDA_VISIBLE_DEVICES =  0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
++ DATA=/nfs/users/ext_amaya.dharmasiri/repos/VL-LTR/data
++ TRAINER=ZeroshotCLIP
++ DATASET=imagenet_LT
++ CFG=rn50
++ /nfs/users/ext_amaya.dharmasiri/miniconda3/envs/dassl/bin/python -u train.py --root /nfs/users/ext_amaya.dharmasiri/repos/VL-LTR/data --trainer ZeroshotCLIP --dataset-config-file configs/datasets/imagenet_LT.yaml --config-file configs/trainers/CoOp/rn50.yaml --output-dir output/ZeroshotCLIP/rn50/imagenet_LT --eval-only
+/nfs/users/ext_amaya.dharmasiri/miniconda3/envs/dassl/bin/python: can't open file 'train.py': [Errno 2] No such file or directory

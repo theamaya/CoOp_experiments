@@ -1,0 +1,18 @@
+Python Interpreter = /nfs/users/ext_amaya.dharmasiri/miniconda3/envs/dassl/bin/python
+which nvcc =  /usr/local/cuda/bin/nvcc
+nvcc --version =  nvcc: NVIDIA (R) Cuda compiler driver Copyright (c) 2005-2020 NVIDIA Corporation Built on Wed_Jul_22_19:09:09_PDT_2020 Cuda compilation tools, release 11.0, V11.0.221 Build cuda_11.0_bu.TC445_37.28845127_0
+CUDA_VISIBLE_DEVICES =  0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
++ DATA=/nfs/users/ext_amaya.dharmasiri/repos/VL-LTR/data
++ TRAINER=CoOp
++ DATASET=imagenetLT
++ CFG=rn50_cvlp/rn50_80promptcvlp
++ CTP=end
++ NCTX=16
++ SHOTS=16
++ CSC=False
++ PRETRAINED_BACKBONE=/nfs/users/ext_amaya.dharmasiri/repos/VL-LTR/checkpoints/pretrain_r50_original/checkpoint_50.pth
++ for SEED in 1
++ DIR=output/imagenetLT/CoOp/rn50_cvlp/rn50_80promptcvlp_16shots/nctx16_cscFalse_ctpend/seed1
++ '[' -d output/imagenetLT/CoOp/rn50_cvlp/rn50_80promptcvlp_16shots/nctx16_cscFalse_ctpend/seed1 ']'
++ /nfs/users/ext_amaya.dharmasiri/miniconda3/envs/dassl/bin/python -u train.py --root /nfs/users/ext_amaya.dharmasiri/repos/VL-LTR/data --seed 1 --trainer CoOp --dataset-config-file configs/datasets/imagenetLT.yaml --config-file configs/trainers/CoOp/rn50_cvlp/rn50_80promptcvlp.yaml --output-dir output/imagenetLT/CoOp/rn50_cvlp/rn50_80promptcvlp_16shots/nctx16_cscFalse_ctpend/seed1 --pretrained_backbone /nfs/users/ext_amaya.dharmasiri/repos/VL-LTR/checkpoints/pretrain_r50_original/checkpoint_50.pth TRAINER.COOP.N_CTX 16 TRAINER.COOP.CSC False TRAINER.COOP.CLASS_TOKEN_POSITION end DATASET.NUM_SHOTS 16
+slurmstepd: error: *** JOB 45115 ON p4-r67-a.g42cloud.net CANCELLED AT 2022-08-29T14:43:47 ***

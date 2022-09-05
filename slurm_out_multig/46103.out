@@ -1,0 +1,25 @@
+Python Interpreter = /nfs/users/ext_amaya.dharmasiri/miniconda3/envs/dassl/bin/python
+which nvcc =  /usr/local/cuda/bin/nvcc
+nvcc --version =  nvcc: NVIDIA (R) Cuda compiler driver Copyright (c) 2005-2020 NVIDIA Corporation Built on Wed_Jul_22_19:09:09_PDT_2020 Cuda compilation tools, release 11.0, V11.0.221 Build cuda_11.0_bu.TC445_37.28845127_0
+CUDA_VISIBLE_DEVICES =  0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
++ DATA=/nfs/users/ext_amaya.dharmasiri/repos/VL-LTR/data
++ TRAINER=CoOp
++ DATASET=imagenetLT
++ CFG=rn50_nocvlp
++ CTP=end
++ NCTX=8
++ SHOTS=0
++ CSC=False
++ RUN=originalclip_completeimagenetLT
++ for SEED in 1
++ DIR=output/imagenetLT/CoOp/originalclip_completeimagenetLT/rn50_nocvlp_0shots/nctx8_cscFalse_ctpend/seed1
++ '[' -d output/imagenetLT/CoOp/originalclip_completeimagenetLT/rn50_nocvlp_0shots/nctx8_cscFalse_ctpend/seed1 ']'
++ /nfs/users/ext_amaya.dharmasiri/miniconda3/envs/dassl/bin/python -u train.py --root /nfs/users/ext_amaya.dharmasiri/repos/VL-LTR/data --seed 1 --trainer CoOp --dataset-config-file configs/datasets/imagenetLT.yaml --config-file configs/trainers/CoOp/rn50_nocvlp.yaml --output-dir output/imagenetLT/CoOp/originalclip_completeimagenetLT/rn50_nocvlp_0shots/nctx8_cscFalse_ctpend/seed1 --resume output/imagenetLT/CoOp/originalclip_completeimagenetLT/rn50_nocvlp_0shots/nctx8_cscFalse_ctpend/seed1/prompt_learner --run originalclip_completeimagenetLT TRAINER.COOP.N_CTX 8 TRAINER.COOP.CSC False TRAINER.COOP.CLASS_TOKEN_POSITION end DATASET.NUM_SHOTS 0
+/nfs/users/ext_amaya.dharmasiri/repos/CoOp/clip/clip.py:23: UserWarning: PyTorch version 1.7.1 or higher is recommended
+  warnings.warn("PyTorch version 1.7.1 or higher is recommended")
+Traceback (most recent call last):
+  File "train.py", line 26, in <module>
+    import trainers.coop
+  File "/nfs/users/ext_amaya.dharmasiri/repos/CoOp/trainers/coop.py", line 18, in <module>
+    import wandb
+ModuleNotFoundError: No module named 'wandb'
