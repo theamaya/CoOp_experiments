@@ -18,10 +18,15 @@ _tokenizer = _Tokenizer()
 import wandb
 
 prob_list = torch.load('imagenet_probabilities.pt')
-def lgadjusted_cross_entropy(output, label):
+def lgadjusted_cross_entropy(output, label, prob_list):
     y = torch.exp(output) * prob_list
-    logprobs = torch.log(y / torch.sum(y, dim=-1))
-    loss = -torch.sum(label * logprobs, dim=-1)
+    logprobs = torch.log(y / torch.sum(y, dim=-1).unsqueeze(1))
+    loss = -torch.sum(logprobs * F.one_hot(label, 1000), dim=-1)
+    #
+    #
+    # y = torch.exp(output) * prob_list
+    # logprobs = torch.log(y / torch.sum(y, dim=-1))
+    # loss = -torch.sum(label * logprobs, dim=-1)
     return loss.mean()
 
 def load_clip_to_cpu(cfg):
@@ -294,7 +299,8 @@ class CoOp(TrainerX):
             with autocast():
                 output = self.model(image)
                 # loss = F.cross_entropy(output, label)
-                loss = lgadjusted_cross_entropy(output, label)
+                prob_list = prob_list.to(self.device)
+                loss = lgadjusted_cross_entropy(output, label, prob_list)
 
             self.optim.zero_grad()
             self.scaler.scale(loss).backward()
@@ -303,7 +309,8 @@ class CoOp(TrainerX):
         else:
             output = self.model(image)
             # loss = F.cross_entropy(output, label)  ###### the coop uses directly cross entropy
-            loss = lgadjusted_cross_entropy(output, label)
+            prob_list= prob_list.to(self.device)
+            loss = lgadjusted_cross_entropy(output, label, prob_list)
             self.model_backward_and_update(loss)
 
         loss_summary = {
