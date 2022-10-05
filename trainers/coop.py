@@ -17,6 +17,13 @@ _tokenizer = _Tokenizer()
 
 import wandb
 
+prob_list = torch.load('imagenet_probabilities.pt')
+def lgadjusted_cross_entropy(output, label):
+    y = torch.exp(output) * prob_list
+    logprobs = torch.log(y / torch.sum(y, dim=-1))
+    loss = -torch.sum(label * logprobs, dim=-1)
+    return loss.mean()
+
 def load_clip_to_cpu(cfg):
     backbone_name = cfg.MODEL.BACKBONE.NAME
 
@@ -286,14 +293,17 @@ class CoOp(TrainerX):
         if prec == "amp":
             with autocast():
                 output = self.model(image)
-                loss = F.cross_entropy(output, label)
+                # loss = F.cross_entropy(output, label)
+                loss = lgadjusted_cross_entropy(output, label)
+
             self.optim.zero_grad()
             self.scaler.scale(loss).backward()
             self.scaler.step(self.optim)
             self.scaler.update()
         else:
             output = self.model(image)
-            loss = F.cross_entropy(output, label)  ###### the coop uses directly cross entropy
+            # loss = F.cross_entropy(output, label)  ###### the coop uses directly cross entropy
+            loss = lgadjusted_cross_entropy(output, label)
             self.model_backward_and_update(loss)
 
         loss_summary = {
